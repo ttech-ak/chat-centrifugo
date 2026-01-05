@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "chat_centrifugo"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.14"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "greenlet>=3.3.0",
+    "sqlalchemy>=2.0",
+    "websockets>=15.0.1",
+    "mypy>=1.19.1",
+    "pyright",
+    "fastapi[standard]",
+    "requests",
+    "PyJWT",
+]
+[tool.setuptools]
+py-modules = ["server"]
