@@ -20,7 +20,7 @@ class Nick(Base):
 
 class Log(Base):
     __tablename__ = "log"
-    lid: Mapped[str] = mapped_column(primary_key=True)
+    lid: Mapped[int] = mapped_column(primary_key=True)
     nick: Mapped[str] = mapped_column(sa.ForeignKey("nick.nick"))
     msg: Mapped[str] = mapped_column(String(512))
     chan: Mapped[str] = mapped_column(String(64))

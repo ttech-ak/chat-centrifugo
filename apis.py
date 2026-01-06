@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends, Request, Header, HTTPException
+from fastapi import APIRouter, Depends, Header, HTTPException
 from typing import Annotated, Any
 import sqlalchemy.orm as sorm
-import sqlalchemy as sa
 from pydantic import BaseModel
 import models
-import centrifuge
+import centrifuge_api as centrifuge
 import jwt
 import time
 
@@ -69,7 +68,7 @@ def join_chan(chan: str, nick: nickDep):
 
 @router.post('/msg')
 def msg_chan(msg: Message, nick: nickDep, db: dbDep):
-    with db() as sess:
+    with db.begin() as sess:
         models.new_log(sess, nick, msg.channel, msg.message)
         centrifuge.publish(nick, msg.channel, msg.message)
     return resp(True, f'posted message by {nick}')

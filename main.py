@@ -6,7 +6,7 @@ import apis
 import uvicorn
 import json
 import logging
-import centrifuge
+import centrifuge_api
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -39,8 +39,9 @@ def main():
             # can't do anything here either
             raise
     apis.jwt_secret = secret
-    centrifuge.CENTRIFUGO_API_KEY = api_key
+    centrifuge_api.CENTRIFUGO_API_KEY = api_key
     logger.info(f"got centrifugo secret key: {secret}")
+    logger.info(f"got centrifugo api key key: {api_key}")
     app = FastAPI()
     app.include_router(apis.router)
     uvicorn.run(app, host=args.host, port=args.port)
