@@ -6,9 +6,11 @@ import apis
 import uvicorn
 import json
 import logging
+import centrifuge
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
-import centrifuge
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(

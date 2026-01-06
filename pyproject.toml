@@ -18,4 +18,4 @@ dependencies = [
     "PyJWT",
 ]
 [tool.setuptools]
-py-modules = ["server"]
+py-modules = ["main"]
